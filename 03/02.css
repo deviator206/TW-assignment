@@ -1,0 +1,175 @@
+
+
+#app_wrapper
+{
+	width:100%;
+	font-size:1em;
+}
+
+#side_content
+{
+	width:25%;
+	float:left;
+	
+}
+
+#app_content
+{
+	width:65%;
+	height:100%;
+	float:left;
+	
+}
+
+.app-header
+{
+	font-size:2em;
+	
+	font-weight:bold;
+}
+
+.dataInputContainer
+{
+	border:1px red solid;
+}
+
+.dataInputContainer>div
+{
+	padding:1em;
+	
+}
+
+
+.topButtonContainer
+{
+ width:100%;
+}
+.btn
+{
+	width: 4.5em;
+	background-color: rgb(94, 30, 30);
+	display: table-cell;
+	font-size: 1.5em;
+	border-radius: 1em 1em 0 0;
+	text-align: center;
+	color: white;
+	padding:0.3em;
+}
+.btnSelected
+{
+	background-color:blue;
+}
+
+
+.sliderContainer
+{
+	width:100%;
+	border:1px red solid;
+	margin-top:1em;
+	height:10em;
+}
+
+.slider-ball
+{
+	background-color: red;
+	width: 1.5em;
+	height: 1.5em;
+	float: left;
+	margin-left: 2em;
+	margin-top: -1em;
+}
+.slider-wrapper
+{
+	height: 4em;
+	border: 2px blue solid;
+	padding-bottom: 2em;
+	cursor: pointer;
+}
+
+
+/*** APP CONTENT ***/
+#search_result_content
+{
+	height: 500px;
+	border: 2px grey solid;
+	overflow-x :hidden;
+	overflow-y:auto;
+}
+#search_result_header
+{
+	height:3em;
+	padding :0.5em;
+	border:2px grey solid;
+}
+#flight_route
+{
+	float: left;
+	width: 80%;
+	font-size:2em;
+}
+
+.flight-depart-return
+{
+	float:left;
+	width: 20%;
+}
+
+
+
+.flight-detail-single-row
+{
+	width: 90%;
+	margin: 3%;
+	border: 2px brown solid;
+	min-height: 120px;
+	padding: 2% 2% 0 2%;
+}
+
+.flight-cost-and-details
+{
+	width:80%;
+	float:left;
+}
+
+.flight-booking-action
+{
+	width:20%;
+	float:left;
+}
+
+
+.slider-bar
+{
+	width: 14em;
+	border: 5px solid grey;
+	margin-left: 2em;
+	margin-top: 3em;
+}
+
+
+
+/***/
+
+.date-controller
+{
+	width:100px;
+	height:100px;
+	background-color:red;
+	position:absolute;
+}
+
+
+
+/*** COMMON */
+.full-width{
+	width:100%;
+}
+.half-width
+{
+	width:50%;
+	float:left;
+}
+.floatL
+{
+ float:left;
+}
