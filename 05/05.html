@@ -10,15 +10,67 @@
 	
 	<meta name="viewport" content="width:device-width,initial-scale=1">
 	
-	<link href="02.css" rel="stylesheet"></link>
+	<link href="css/app.css" rel="stylesheet"></link>
+	<script src="js/misc.js"></script>
+	<script src="js/data.js"></script>
 <!-- HEAD ELEMENTs --> 
 	<title>Flight Search </title>
 </head>
 <body>
 <!-- BODY ELEMENTs --> 
+<script type="text/dev-template" id="flightDetailTemplate">
+	
+						<div class="flight-cost-and-details"> 
+							<div class="flight-cost full-width"><%=cost=%> </div>
+							<div class="flight-details full-width">
+								<div class="src1 half-width">
+									<div><%=flightName=%></div>
+									<div><%=flightRoute=%></div>
+									<div>DEPART : <%=flightDepartTime=%></div>
+									<div>ARRIVE :<%=flightArriveTime=%></div>
+								</div>
+								<div class="src2 half-width">
+									<div><%=returnFlightName=%></div>
+									<div><%=returnFlightRoute=%></div>
+									<div>DEPART : <%=returnFlightDepartTime=%></div>
+									<div>ARRIVE : <%=returnFlightArriveTime=%></div>
+								</div>
+							</div>	
+						</div>
+						<div id="<%=bookBtnComponent=%>" class="flight-booking-action">
+							<div class="flight-image full-width add_bg"> IMG </div>
+							
+							<div class="flight-booking-btn full-width book_btn"> Book </div>
+						</div>
+	
+</script>
 
+<script id="dateComponentTemplate" type="text/dev-template">
+				<div id="<%=componentId=%>">Day: <select class="fetchDay" >
+									
+								</select>
+								 Month: <select  class="fetchMonth" >
+									
+								</select>
+								 Year: <select class="fetchYear" >
+									
+								</select>
+					</div>
+</script>
 
-<div id="app_wrapper">
+<script id="qtyComponentTemplate" type="text/dev-template">
+	<div>Enter the Range 
+								<div class="range-filter-old-browser">
+									<input id="startQty" type="text"></input> to  <input id="endQty" type="text"></input>
+									<div id="applyCostFilter">Apply</div>
+								</div>	
+							</div>
+							
+</script>
+
+<div id="landingPage"> Loading Please wait...</div>
+	
+<div id="searchPage" style="display:none;">
 	<div id="app_header">
 		<div class="app-header"> FSE </div>
 	</div>
@@ -26,28 +78,49 @@
 	
 	<div id="app_container">
 		<div id="side_content">
-			<div class="topButtonContainer"> <div class="oneTripBtn btn">One Way</div><div class="roundTripBtn btn">Return</div></div>
+			<div class="topButtonContainer"> <div id="oneWayBtn" class="oneTripBtn btn">One Way</div><div id="twoWayBtn" class="roundTripBtn btn">Return</div></div>
 			<div class="dataInputContainer">
-				<div><input type="text" placeholder="Enter Origin City"></input></div>
-				<div><input type="text" placeholder="Enter Destination City"></input></div>
+				<div><input id="originName" type="text" placeholder="Enter Origin City"></input></div>
+				<div><input  id="destinationName" type="text" placeholder="Enter Destination City"></input></div>
+				
+				<!-- 
+				FOR CREATING OWN COMPONENTS 
 				<div id="startDateComponent"><div id="startDateDisplay">Enter Date</div><div> DateComponent Comes Here</div></div>
-				<div id="endDateComponent"><div id="endDateDisplay">Enter Date</div><div> DateComponent Comes Here</div></div>
-				<div><input type="text" placeholder="Enter Passengers"></input></div>
+				<div id="endDateComponent"><div id="endDateDisplay">Enter Date</div><div> DateComponent Comes Here</div></div> 
+				
+				-->
+				
+				<div id="startDateComponent" ><label  type="text" placeholder="Enter Date" > Start Date </label><input id="startDateInput" type="date" /></div>
+				<div id="endDateComponent"><label  type="text" placeholder="Enter Date" > End Date :</label><input id="endDateInput" type="date" /></div> 
+				
+				
+				<div class="passengerCountContainer"> <div id="addPassenger" class="passengerComponent plus"> </div> <input id="passengerCount" type="text" class="floatL" placeholder="Enter Passengers"></input> <div id="removePassenger" class="passengerComponent minus"> </div></div>
+				
+				<div id="searchBtn"> Search </div>
 			</div>
 			<div class="sliderContainer">
+				
+					<!-- 
+					 For Custom Component
 					<div id="enableSliderBtn" class="slider-enabler">
 						OFF
 					</div>
 					<div id="slider" class="slider-wrapper">
 						<div id="slider_bar" class="slider-bar"> </div>
 						<div id="slider_handle" class="slider-ball"> </div>
+					</div> -->
+					
+					<div  id="filterCost" class="slider-wrapper">
+							<span id="startValue"> 0 </span><input id="filterValue" class ="range-filter" type="range" min="0" max="100" value="0"  step="1"></input>  <span id="endValue"> 100</span>
+							<div> </div>
+							<span id="startValue"> 0 </span><div id="scrollerComponent"> Scroller</div>  <span id="endValue"> 100</span>
 					</div>
 			</div>
 		</div>
 		<div id="app_content">
 			<div id="search_result_header">
 					<div id="flight_route"> Pune > Delhi > Pune </div>
-					<div class="flight-depart-return">
+					<div id="flight_deart_return_date" class="flight-depart-return">
 						<div>
 							Depart : 12/12/2014
 						</div>	
@@ -254,7 +327,11 @@
 		<div id="monthPrev half-width"> &gt;</div>	
 	</div>
 </div>
-<script src="src.js"></script>
+<script src="js/landing.js"></script>
+<script src="js/search.js"></script>
+<script src="js/wrapper.js"></script>
+
+
 </body>
 
 </html>

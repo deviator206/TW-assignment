@@ -1,6 +1,6 @@
 
 
-#app_wrapper
+#searchPage
 {
 	width:100%;
 	font-size:1em;
@@ -47,20 +47,69 @@
 .btn
 {
 	width: 4.5em;
-	background-color: rgb(94, 30, 30);
+	background-color: grey;
 	display: table-cell;
 	font-size: 1.5em;
 	border-radius: 1em 1em 0 0;
 	text-align: center;
 	color: white;
 	padding:0.3em;
+	cursor:pointer;
 }
 .btnSelected
 {
-	background-color:blue;
+	background-color:red;
 }
 
+/* passenger  count component*/
 
+.minus
+{
+	background-image : url("../img/minus.png");
+	background-repeat:no-repeat;
+	
+}
+
+.plus
+{
+	background-image : url("../img/plus.jpg");
+	background-repeat:no-repeat;
+	
+}
+
+.passengerComponent
+{
+	width: 12%;
+	height: 2em;
+	float: left;
+	background-size:100%;
+	cursor:pointer;
+}
+
+#passengerCount{
+
+	width: 3em;
+	text-align: center;
+	height: 2em;
+}
+
+.passengerCountContainer
+{
+	height:2em;
+}
+
+.flight-booking-btn
+{
+	text-align:center;
+	cursor:pointer;
+}
+.flight-image
+{
+	width: 100%;
+	height: 5em;
+	border: 1px red solid;
+	text-align:center;
+}
 .sliderContainer
 {
 	width:100%;
@@ -69,6 +118,23 @@
 	height:10em;
 }
 
+
+/*Search button*/
+#searchBtn
+{
+	width: 48%;
+	background-color: gainsboro;
+	text-align: center;
+	margin-left: 1em;
+	margin-bottom: 1em;
+	font-size: 1.2em;
+	cursor: pointer;
+}
+
+/*
+ Slider custom component
+
+*/
 .slider-ball
 {
 	background-color: red;
@@ -81,12 +147,30 @@
 .slider-wrapper
 {
 	height: 4em;
-	border: 2px blue solid;
-	padding-bottom: 2em;
+	padding: 2em;
 	cursor: pointer;
 }
+.range-filter-old-browser
+{
+	width:30%;
+}
+.range-filter
+{
+	width:70%;
+}
 
-
+.filter-inputs
+{
+	margin-top:1em;
+}
+#applyCostFilter
+{
+	width :70%;
+	text-align:center;
+	cursor:pointer;
+	background-color:grey;
+	margin-top:1em;
+}
 .slider-enabler
 {
 	width: 100%;
@@ -182,4 +266,12 @@
 .floatL
 {
  float:left;
+}
+
+
+
+
+#scrollerComponent
+{
+
 }

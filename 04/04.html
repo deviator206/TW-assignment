@@ -10,15 +10,42 @@
 	
 	<meta name="viewport" content="width:device-width,initial-scale=1">
 	
-	<link href="02.css" rel="stylesheet"></link>
+	<link href="app.css" rel="stylesheet"></link>
 <!-- HEAD ELEMENTs --> 
 	<title>Flight Search </title>
 </head>
 <body>
 <!-- BODY ELEMENTs --> 
+<script type="text/dev-template">
+	<div class="flight-detail-single-row">
+						<div class="flight-cost-and-details"> 
+							<div class="flight-cost full-width"><%= cost =%> </div>
+							<div class="flight-details full-width">
+								<div class="src1 half-width">
+									<div><%= flightName =%></div>
+									<div><%= flightRoute =%></div>
+									<div>DEPART : <%= flightDepartTime =%></div>
+									<div>ARRIVE :<%= flightArriveTime =%></div>
+								</div>
+								<div class="src2 half-width">
+									<div><%= flightName =%></div>
+									<div><%= flightRoute =%></div>
+									<div>DEPART : <%= flightDepartTime =%></div>
+									<div>ARRIVE : <%= flightArriveTime =%></div>
+								</div>
+							</div>	
+						</div>
+						<div class="flight-booking-action">
+							<div class="flight-image full-width add_bg"> IMG </div>
+							<div class="flight-booking-btn full-width book_btn"> Book </div>
+						</div>
+					</div>
+	
+</script>
 
-
-<div id="app_wrapper">
+<div id="landingPage"> Loading Please wait...</div>
+	
+<div id="searchPage" style="display:none;">
 	<div id="app_header">
 		<div class="app-header"> FSE </div>
 	</div>
@@ -28,20 +55,38 @@
 		<div id="side_content">
 			<div class="topButtonContainer"> <div class="oneTripBtn btn">One Way</div><div class="roundTripBtn btn">Return</div></div>
 			<div class="dataInputContainer">
-				<div><input type="text" placeholder="Enter Origin City"></input></div>
-				<div><input type="text" placeholder="Enter Destination City"></input></div>
+				<div><input id="originName" type="text" placeholder="Enter Origin City"></input></div>
+				<div><input  id="destinationName" type="text" placeholder="Enter Destination City"></input></div>
+				
+				<!-- 
+				FOR CREATING OWN COMPONENTS 
 				<div id="startDateComponent"><div id="startDateDisplay">Enter Date</div><div> DateComponent Comes Here</div></div>
-				<div id="endDateComponent"><div id="endDateDisplay">Enter Date</div><div> DateComponent Comes Here</div></div>
-				<div><input type="text" placeholder="Enter Passengers"></input></div>
+				<div id="endDateComponent"><div id="endDateDisplay">Enter Date</div><div> DateComponent Comes Here</div></div> 
+				
+				-->
+				
+				<div><label  type="text" placeholder="Enter Date" > Start Date </label><input type="date" /></div>
+				<div><label  type="text" placeholder="Enter Date" > End Date </label><input type="date" /></div> 
+				
+				<div><input id="passengerCount" type="text" placeholder="Enter Passengers"></input></div>
+				
+				<div id="searchBtn"> Search </div>
 			</div>
 			<div class="sliderContainer">
+				
+					<!-- 
+					 For Custom Component
 					<div id="enableSliderBtn" class="slider-enabler">
 						OFF
 					</div>
 					<div id="slider" class="slider-wrapper">
 						<div id="slider_bar" class="slider-bar"> </div>
 						<div id="slider_handle" class="slider-ball"> </div>
-					</div>
+					</div> -->
+					
+					<div  class="slider-wrapper">
+							<input type="range" ></input>
+						</div>
 			</div>
 		</div>
 		<div id="app_content">

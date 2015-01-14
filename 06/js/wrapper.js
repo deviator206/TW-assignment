@@ -1,3 +1,95 @@
+//wrapper component
+gApp.AppWrapper = function()
+{
+	this.appState = gApp.AppConstant.INIT_STATE;
+	this.pageInstances = {};
+	this.browserType = 0 ; // 0 -- rest  and 1 -- old IE
+	this.browserBasedChanges();
+	this.setUp();
+
+}
+
+gApp.AppWrapper.prototype = {
+
+	browserBasedChanges :function()
+	{
+		 //browser detection code
+		 var browserVersion  = this.getIE();
+		 this.browserType = 0 ;
+		 if(typeof browserVersion !== undefined && typeof browserVersion !== "boolean" )
+		 {
+			 if(browserVersion < 11)
+			 {
+				this.browserType = 0;
+			 }
+			 else
+			 {
+				this.browserType = 1;
+			 }
+		 }
+	},
+	getIE :function() {
+		  var myNav = navigator.userAgent.toLowerCase();
+		  return (myNav.indexOf('msie') != -1) ? parseInt(myNav.split('msie')[1]) : false;
+	},
+	
+	//add page to base page tracker	
+	addPage:function(pageName,pageInstance)
+	{
+		if(this.pageInstances.hasOwnProperty(pageName))
+		{
+			//exist then overwrite
+			this.pageInstances[pageName] = pageInstance;
+		}
+		else
+		{
+			//new
+			this.pageInstances[pageName] = pageInstance;
+		}
+		
+		// hide all page;
+		var index =0;
+		for(index=0;index<gApp.AppConstant.PAGE_NAME.length;index++)
+		{
+			document.getElementById(gApp.AppConstant.PAGE_NAME[index]).style.display="none";
+		}
+		//show the latest page 
+		document.getElementById(pageName).style.display="block";
+	},
+	
+	setUp:function()
+	{
+		//set to initial state
+		this.appState = gApp.AppConstant.INIT_STATE;
+		var pageInstance = new gApp.LandingPage();
+		this.addPage("landingPage",pageInstance);
+		// since no action on landing page redirect it to searchPage
+		this.appState = 1;
+		this.showPage();
+	},
+	showPage :function()
+	{
+		var pageInstance;
+		switch(this.appState)
+		{
+			case 1:
+				// RESET STATE
+				pageInstance = new 	gApp.SearchPage();
+				this.addPage(gApp.AppConstant.PAGE_NAME[this.appState],pageInstance);
+			break;
+		}
+	}
+	
+}
+
+
+
+
+
+
+/*
+Testing Custom component
+
 window.onload = function()
 {
 	document.getElementById("startDateComponent").addEventListener("click",function(evt)
@@ -22,11 +114,18 @@ window.onload = function()
 	var m1 =  new window.scroller({scrollerDiv:"slider_handle",barDiv:"slider_bar",slider:"slider","enablerDiv":"enableSliderBtn"})
 }
 
+*/
 
 
 
 
+var appInitialization = function()
+{
+	var app =  new gApp.AppWrapper();
+}
 
+
+window.on("","load",appInitialization)
 
 
 
@@ -133,32 +232,3 @@ window.scroller.prototype = {
 
 
 
-/*
- common functionality
-*/
-window.on = function( divName, evtType,evtHandler)
-{	
-	var domEle
-	if(divName === "")
-		domEle = window
-	else	
-		domEle = document.getElementById(divName);
-		if (domEle !== undefined && domEle.attachEvent) {
-			domEle.attachEvent("on" + evtType, evtHandler);
-		} else if (domEle !== undefined) {
-			domEle.addEventListener(evtType, evtHandler);
-		}
-}
-
-
-window.getPosition = function(element) {
-    var xPosition = 0;
-    var yPosition = 0;
-  
-    while(element) {
-        xPosition += (element.offsetLeft - element.scrollLeft + element.clientLeft);
-        yPosition += (element.offsetTop - element.scrollTop + element.clientTop);
-        element = element.offsetParent;
-    }
-    return { x: xPosition, y: yPosition };
-}
